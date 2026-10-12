@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<aside class="sidebar" th:fragment="sidebar(active)">
+  <a class="side-brand" th:href="@{/}"><span class="brand-mark">C</span><span class="brand-word">CampusPulse <b>AI</b></span></a>
+  <div class="side-label">Workspace</div>
+  <nav class="nav-list" aria-label="Main navigation">
+    <a th:href="@{/}" th:class="${active == 'overview' ? 'nav-link active' : 'nav-link'}"><span>◫</span>Overview</a>
+    <a th:href="@{/tickets/new}" th:class="${active == 'report' ? 'nav-link active' : 'nav-link'}"><span>＋</span>Report an issue</a>
+    <a th:href="@{/tickets}" th:class="${active == 'tickets' ? 'nav-link active' : 'nav-link'}"><span>▤</span>My tickets</a>
+    <a th:href="@{/assistant}" th:class="${active == 'assistant' ? 'nav-link active' : 'nav-link'}"><span>✳</span>Campus assistant</a>
+    <a th:href="@{/insights}" th:class="${active == 'insights' ? 'nav-link active' : 'nav-link'}"><span>⌁</span>Campus insights</a>
+    <a th:href="@{/notices}" th:class="${active == 'notices' ? 'nav-link active' : 'nav-link'}"><span>▣</span>Campus notices</a>
+    <a th:if="${currentUser != null and currentUser.role.name() == 'ADMIN'}" th:href="@{/admin/users}" th:class="${active == 'admin' ? 'nav-link active' : 'nav-link'}"><span>⚙</span>Admin & access</a>
+  </nav>
+  <div class="side-bottom">
+    <div class="side-note"><div class="side-note-title">Made for student voice</div><p>Every ticket has a path. Every pattern can lead to a better campus decision.</p></div>
+    <div class="user-card"><span class="avatar" th:text="${currentUser == null ? 'S' : #strings.substring(currentUser.displayName,0,1).toUpperCase()}">S</span><span class="user-meta"><strong th:text="${currentUser == null ? 'Student' : currentUser.displayName}">Student</strong><small th:text="${currentUser == null ? '' : currentUser.role.label}">Student</small></span><form th:action="@{/logout}" method="post"><button class="icon-button" type="submit" title="Sign out" aria-label="Sign out">↪</button></form></div>
+  </div>
+</aside>
+</body></html>

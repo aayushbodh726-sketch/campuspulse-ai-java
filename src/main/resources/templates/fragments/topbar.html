@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header class="topbar" th:fragment="topbar(title)">
+  <div class="topbar-title-wrap"><button type="button" class="mobile-menu" data-menu-toggle aria-label="Toggle navigation">☰</button><div><h1 th:text="${title}">Overview</h1><p th:text="${todayLabel}">Monday, 12 October</p></div></div>
+  <div class="topbar-actions"><a class="btn btn-primary btn-small" th:href="@{/tickets/new}">＋ New report</a><span class="avatar-top" th:text="${currentUser == null ? 'S' : #strings.substring(currentUser.displayName,0,1).toUpperCase()}">S</span></div>
+</header>
+</body></html>

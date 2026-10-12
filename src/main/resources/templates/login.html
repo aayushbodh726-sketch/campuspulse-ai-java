@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#152543">
+  <title>Sign in · CampusPulse AI</title><link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body class="auth-body">
+<div class="auth-layout">
+  <aside class="auth-brand"><a class="side-brand" th:href="@{/}"><span class="brand-mark">C</span><span class="brand-word">CampusPulse <b>AI</b></span></a><div class="auth-brand-copy"><span class="eyebrow light">STUDENT-FIRST CAMPUS TOOLS</span><h1>Your voice belongs in the solution.</h1><p>Report campus concerns, follow the response, and help surface problems that keep coming back.</p></div><div class="auth-foot">CampusPulse AI · Student project prototype</div></aside>
+  <main class="auth-main"><section class="auth-card"><span class="eyebrow">WELCOME BACK</span><h2>Sign in to CampusPulse</h2><p class="muted">Use one of the demo accounts for your local project walkthrough.</p>
+    <div class="alert error" th:if="${param.error}">Email or password was incorrect. Try again.</div><div class="alert success" th:if="${param.logout}">You have signed out successfully.</div>
+    <form th:action="@{/login}" method="post" class="form-stack"><label>Email address<input type="email" name="username" autocomplete="username" placeholder="student@campuspulse.local" required autofocus></label><label>Password<input type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required></label><button type="submit" class="btn btn-primary btn-wide">Sign in →</button></form>
+    <div class="demo-creds"><strong>Local demo credentials</strong><div><span>Student</span><code>student@campuspulse.local</code><code>Student123!</code></div><div><span>Staff</span><code>staff@campuspulse.local</code><code>Staff123!</code></div><div><span>Admin</span><code>admin@campuspulse.local</code><code>Admin123!</code></div></div>
+    <p class="tiny muted">These credentials are for local demonstration only. Disable demo seeding and create proper accounts before any public deployment.</p>
+  </section></main>
+</div>
+</body></html>
