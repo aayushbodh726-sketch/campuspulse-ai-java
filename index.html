@@ -16,6 +16,37 @@
   <body class="bg-[#f5f7fb] text-[#152543] antialiased selection:bg-blue-100 selection:text-blue-900 min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      // GitHub Pages / static hosting automatic bundle loader
+      function loadStaticBundle() {
+        if (window.__CAMPUSPULSE_LOADED__ || window.__CAMPUSPULSE_LOADING_BUNDLE__) return;
+        window.__CAMPUSPULSE_LOADING_BUNDLE__ = true;
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './dist/assets/index.css';
+        document.head.appendChild(link);
+
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.crossOrigin = 'anonymous';
+        script.src = './dist/assets/index.js';
+        document.body.appendChild(script);
+      }
+
+      window.addEventListener('error', function (e) {
+        if (e && e.filename && (e.filename.includes('main.tsx') || e.filename.endsWith('.tsx'))) {
+          loadStaticBundle();
+        }
+      }, true);
+
+      // If after 500ms the app hasn't mounted into #root (typical on static GitHub Pages)
+      setTimeout(function () {
+        const root = document.getElementById('root');
+        if (root && root.children.length === 0 && !window.__CAMPUSPULSE_LOADED__) {
+          loadStaticBundle();
+        }
+      }, 500);
+    </script>
   </body>
 </html>
 
