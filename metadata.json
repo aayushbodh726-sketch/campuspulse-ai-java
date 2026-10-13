@@ -1,0 +1,6 @@
+{
+  "name": "CampusPulse AI",
+  "description": "Smart campus issue reporting and resolution platform featuring role-based access, automated category routing, SLA tracking, recurring pattern detection, and an AI campus assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
